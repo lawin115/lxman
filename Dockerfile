@@ -26,5 +26,5 @@ RUN php artisan view:clear || true
 EXPOSE 8000
 
 # Run app with PORT from Railway, fallback 8000
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+CMD php artisan serve 
 
