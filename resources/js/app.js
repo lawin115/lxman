@@ -4,7 +4,8 @@ import './bootstrap';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
-import { ZiggyVue } from '../../vendor/tightenco/ziggy';
+import { ZiggyVue } from 'ziggy-js';
+import { Ziggy } from './ziggy'; // auto-generated if you publish Ziggy routes
 
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
