@@ -1,25 +1,29 @@
-# 1. Base image
-FROM php:8.2-fpm
+FROM php:8.2-cli
 
-# 2. Install extensions
+# Install extensions
 RUN apt-get update && apt-get install -y \
     libzip-dev unzip git curl libpng-dev \
     && docker-php-ext-install pdo_mysql zip gd
 
-# 3. Install Composer
+# Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# 4. Set working dir
+# Workdir
 WORKDIR /var/www/html
 
-# 5. Copy files
+# Copy app
 COPY . .
 
-# 6. Install dependencies
+# Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# 7. Expose port
+# Laravel needs storage/cache links
+RUN php artisan config:clear || true
+RUN php artisan route:clear || true
+RUN php artisan view:clear || true
+
+# Expose
 EXPOSE 8000
 
-# 8. Run Laravel
+# Run app with PORT from Railway, fallback 8000
 CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
