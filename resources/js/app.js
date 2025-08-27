@@ -4,6 +4,8 @@ import './bootstrap';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
+import { ZiggyVue } from '../../vendor/tightenco/ziggy';
+
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -14,20 +16,28 @@ createInertiaApp({
             `./Pages/${name}.vue`,
             import.meta.glob('./Pages/**/*.vue')
         ),
+    
+    // VÊ PÊŞKA 'setup' BI TÊMAMÎ BIGUHERÎNE
     setup({ el, App, props, plugin }) {
-        const app = createApp({ render: () => h(App, props) });
+        const app = createApp({ render: () => h(App, props) }); // 1. Yek car app tê çêkirin
 
         app.use(plugin);
+        app.use(ZiggyVue);
 
-        // optional: simple translator function
+        // 2. Fonksiyona wergerandinê li ser app a heyî tê zêdekirin
         app.config.globalProperties.__ = (key) => {
             const translations = props.initialPage.props.translations;
+            // Piştrast be ku translations û key hene
             return translations && translations[key] ? translations[key] : key;
         };
 
-        app.mount(el);
+        app.mount(el); // 3. Yek car mount dibe
     },
+
+    
     progress: {
         color: '#4B5563',
     },
+
+    
 });
