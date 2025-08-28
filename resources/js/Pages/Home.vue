@@ -83,7 +83,7 @@
         <!-- ========================= -->
         <!-- 2. Beşa Daşkandinê        -->
         <!-- ========================= -->
-        <section id="discounts" class="relative py-24 bg-cover bg-center bg-fixed" style="background-image: url('https://images.pexels.com/photos/3998414/pexels-photo-3998414.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+        <section id="discounts" class="relative py-24 bg-cover bg-center bg-scroll md:bg-fixed" style="background-image: url('https://images.pexels.com/photos/3998414/pexels-photo-3998414.jpeg?auto=compress&cs=tinysrgb&w=1600');">
           <div class="absolute inset-0 bg-black/80"></div>
           <div class="relative container mx-auto px-6 text-center z-10" v-animate-on-scroll>
             <h2 class="text-4xl font-extrabold mb-4">ئۆفەرا <span class="text-yellow-400">تایبەت</span> یا ڤێ حەفتیێ</h2>
