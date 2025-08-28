@@ -159,10 +159,27 @@ onMounted(() => {
 });
 
 // --- KODA NÛ JI BO PARALLAX ---
+
+
 const parallaxSection = ref(null);
 const parallaxOffset = ref(0);
-const PARALLAX_SPEED = 0.3; // Leza efektê (di navbera 0.2 û 0.5 de xweş e)
+const PARALLAX_SPEED = 0.3;
 
+const handleParallaxScroll = () => {
+  if (parallaxSection.value) {
+    const rect = parallaxSection.value.getBoundingClientRect();
+    if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
+      parallaxOffset.value = rect.top * PARALLAX_SPEED;
+    }
+  }
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", handleParallaxScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleParallaxScroll);
 const handleParallaxScroll = () => {
   if (parallaxSection.value) {
     const rect = parallaxSection.value.getBoundingClientRect();
@@ -229,26 +246,20 @@ onMounted(() => {
 });
 </script>
 
-<style>
-/* ... Stîlên din ên CSS wek berê dimînin ... */
+</script>
 
-/* =================================== */
-/* --- STÎLÊN NÛ JI BO PARALLAX --- */
-/* =================================== */
+<style>
 .parallax-bg {
   position: absolute;
-  /* Mezinahiya wê divê ji beşa wê mezintir be da ku dema dilive valahî xuya neke */
   left: -10%;
   top: -20%;
   width: 120%;
   height: 140%;
-  z-index: -1; /* Li paşiya naverokê ye */
+  z-index: -1;
   background-image: url('https://images.pexels.com/photos/3998414/pexels-photo-3998414.jpeg?auto=compress&cs=tinysrgb&w=1600');
   background-size: cover;
   background-position: center;
-  /* Ev guherbar dê ji JavaScript were kontrol kirin */
   transform: translateY(var(--parallax-offset));
-  /* Lîvîna wê nerm dike */
   transition: transform 0.1s linear;
 }
 </style>
