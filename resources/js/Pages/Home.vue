@@ -94,13 +94,17 @@
           </section>
 
           <!-- Discounts -->
-     <section
+<section
   id="discounts"
   class="relative py-16 sm:py-20 md:py-24 bg-cover bg-center bg-fixed"
   style="background-image: url('https://images.pexels.com/photos/3998414/pexels-photo-3998414.jpeg?auto=compress&cs=tinysrgb&w=1600');"
 >
   <!-- Overlay -->
-  <div class="absolute inset-0 bg-black/80 sm:bg-black/50 backdrop-blur-md sm:backdrop-blur-0"></div>
+  <div
+    class="absolute inset-0 bg-black/80 sm:bg-black/50 
+           backdrop-blur-sm sm:backdrop-blur-0 
+           transition duration-500"
+  ></div>
 
   <!-- Content -->
   <div
@@ -117,7 +121,11 @@
       class="bg-gray-900/50 backdrop-blur-sm max-w-md mx-auto p-6 sm:p-8 rounded-2xl border border-yellow-500/30"
     >
       <p class="text-xl text-gray-300 mb-2">داشکاندن</p>
-      <p class="text-5xl sm:text-6xl md:text-7xl font-bold text-yellow-400 mb-6">25%</p>
+      <p
+        class="text-5xl sm:text-6xl md:text-7xl font-bold text-yellow-400 mb-6"
+      >
+        25%
+      </p>
       <Link
         :href="route('offers')"
         class="bg-yellow-400 text-gray-900 font-bold py-3 px-8 sm:px-10 rounded-full text-base sm:text-lg shadow-lg hover:bg-yellow-300 hover:scale-105 transform transition"
@@ -127,6 +135,7 @@
     </div>
   </div>
 </section>
+
 
 
           <!-- Gallery -->
