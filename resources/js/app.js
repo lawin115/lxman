@@ -4,8 +4,8 @@ import './bootstrap';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
-import { ZiggyVue } from 'ziggy-js';
-import { Ziggy } from './ziggy'; // auto-generated if you publish Ziggy routes
+import { route } from './routes';
+
 
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
@@ -23,8 +23,8 @@ createInertiaApp({
         const app = createApp({ render: () => h(App, props) }); // 1. Yek car app tê çêkirin
 
         app.use(plugin);
-        app.use(ZiggyVue);
-
+       
+app.config.globalProperties.route = route;
         // 2. Fonksiyona wergerandinê li ser app a heyî tê zêdekirin
         app.config.globalProperties.__ = (key) => {
             const translations = props.initialPage.props.translations;
