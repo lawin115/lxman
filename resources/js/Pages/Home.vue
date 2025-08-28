@@ -180,15 +180,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener("scroll", handleParallaxScroll);
-const handleParallaxScroll = () => {
-  if (parallaxSection.value) {
-    const rect = parallaxSection.value.getBoundingClientRect();
-    // Efektê tenê çalak bike dema ku beş di dîmenê de ye
-    if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
-      parallaxOffset.value = rect.top * PARALLAX_SPEED;
-    }
-  }
-};
+
 
 // --- Koda berê ya Scroll ---
 const vAnimateOnScroll = {
