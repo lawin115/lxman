@@ -15,7 +15,6 @@
     <main>
       <!-- Beşa Serekî (Hero) -->
       <section id="hero" class="relative h-screen">
-        <!-- ... Koda beşa Hero wek berê dimîne ... -->
         <div class="absolute inset-0">
             <div class="w-full h-full">
               <img
@@ -73,18 +72,17 @@
           </div>
       </section>
       
-      <!-- ============================================= -->
-      <!-- Beşa Daşkandinê (BI TEKNÎKA NÛ YA PARALLAX)    -->
-      <!-- ============================================= -->
+      <!-- Beşa Daşkandinê (RASTKIRÎ) -->
       <section 
         id="discounts"
         ref="parallaxSection"
         class="relative py-24 bg-gray-900 overflow-hidden"
-        :style="{ '--parallax-offset': parallaxOffset + 'px' }"
+        :style="{ 
+          '--parallax-offset': parallaxOffset + 'px', 
+          '--parallax-bg-url': `url(${parallaxImageUrl})` 
+        }"
       >
-        <!-- Ev pseudo-element wêneya paşxanê hildigire û efekta parallax çêdike -->
         <div class="parallax-bg"></div>
-
         <div class="absolute inset-0 bg-black/80"></div>
         <div class="relative container mx-auto px-6 text-center z-10" v-animate-on-scroll>
           <h2 class="text-4xl font-extrabold mb-4">ئۆفەرێن <span class="text-yellow-400">تایبەت</span> ببینە</h2>
@@ -150,6 +148,8 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { Link } from '@inertiajs/vue3';
+// --- KODA NÛ: Wêneya Parallax li vir tê import kirin ---
+import parallaxImageUrl from '@/assets/images/parallax-bg.jpg';
 
 const isLoading = ref(true);
 onMounted(() => {
@@ -158,9 +158,7 @@ onMounted(() => {
   }, 2000);
 });
 
-// --- KODA NÛ JI BO PARALLAX ---
-
-
+// --- Koda Parallax ---
 const parallaxSection = ref(null);
 const parallaxOffset = ref(0);
 const PARALLAX_SPEED = 0.3;
@@ -174,15 +172,6 @@ const handleParallaxScroll = () => {
   }
 };
 
-onMounted(() => {
-  window.addEventListener("scroll", handleParallaxScroll);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("scroll", handleParallaxScroll);
-
-
-// --- Koda berê ya Scroll ---
 const vAnimateOnScroll = {
   mounted: (el) => {
     const observer = new IntersectionObserver(
@@ -225,22 +214,23 @@ const galleryImages = [
 ];
 
 onMounted(() => {
-  window.addEventListener("scroll", handleParallaxScroll); // Lîstenera parallax zêde bike
+  window.addEventListener("scroll", handleParallaxScroll);
   
   const heroInterval = setInterval(() => {
     currentHero.value = (currentHero.value + 1) % heroImages.length;
   }, 5000);
 
   onUnmounted(() => {
-    window.removeEventListener("scroll", handleParallaxScroll); // Lîstenera parallax rake
+    window.removeEventListener("scroll", handleParallaxScroll);
     clearInterval(heroInterval);
   });
 });
 </script>
 
-</script>
-
 <style>
+/* ... Stîlên din ên CSS wek berê dimînin ... */
+
+/* --- STÎLÊN NÛ: Guherbara CSS ji bo Parallax tê bikaranîn --- */
 .parallax-bg {
   position: absolute;
   left: -10%;
@@ -248,7 +238,7 @@ onMounted(() => {
   width: 120%;
   height: 140%;
   z-index: -1;
-  background-image: url('https://images.pexels.com/photos/3998414/pexels-photo-3998414.jpeg?auto=compress&cs=tinysrgb&w=1600');
+  background-image: var(--parallax-bg-url); /* Wêne ji guherbara CSS tê */
   background-size: cover;
   background-position: center;
   transform: translateY(var(--parallax-offset));
