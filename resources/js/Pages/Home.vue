@@ -82,35 +82,36 @@
       <!-- ========================= -->
       <!-- Discounts Section -->
       <!-- ========================= -->
-      <section
-        id="discounts"
-        class="relative py-16 sm:py-24 bg-cover bg-center bg-fixed"
-        style="background-image: url('https://images.pexels.com/photos/3998414/pexels-photo-3998414.jpeg?auto=compress&cs=tinysrgb&w=1600');"
+<section
+  id="discounts"
+  class="relative py-16 sm:py-24 bg-cover bg-center"
+  :class="{'bg-fixed': isDesktop}"
+  style="background-image: url('https://images.pexels.com/photos/3998414/pexels-photo-3998414.jpeg?auto=compress&cs=tinysrgb&w=1600');"
+>
+  <div class="absolute inset-0 bg-black/80"></div>
+  <div
+    class="relative container mx-auto px-4 sm:px-6 text-center z-10"
+  >
+    <h2 class="text-2xl sm:text-4xl font-extrabold mb-4 leading-snug">
+      ئۆفەرا <span class="text-yellow-400">تایبەت</span> یا ڤێ حەفتیێ
+    </h2>
+    <p class="text-gray-200 text-base sm:text-xl mb-8">
+      پاکێجا شاهانە یا زاڤای نوکە ب داشکاندنەکا بێ وێنە وەربگرە!
+    </p>
+    <div
+      class="bg-gray-900/50 backdrop-blur-sm w-full max-w-sm sm:max-w-md mx-auto p-6 sm:p-8 rounded-2xl border border-yellow-500/30"
+    >
+      <p class="text-base sm:text-2xl text-gray-300 mb-2">داشکاندن</p>
+      <p class="text-5xl sm:text-7xl font-bold text-yellow-400 mb-6">25%</p>
+      <Link
+        :href="route('offers')"
+        class="bg-yellow-400 text-gray-900 font-bold py-2 sm:py-3 px-6 sm:px-10 rounded-full text-sm sm:text-lg shadow-lg hover:bg-yellow-300 hover:scale-105 transform transition"
       >
-        <div class="absolute inset-0 bg-black/80"></div>
-        <div class="relative container mx-auto px-4 sm:px-6 text-center z-10">
-          <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">
-            ئۆفەرا <span class="text-yellow-400">تایبەت</span> یا ڤێ حەفتیێ
-          </h2>
-          <p class="text-gray-200 text-base sm:text-xl mb-8">
-            پاکێجا شاهانە یا زاڤای نوکە ب داشکاندنەکا بێ وێنە وەربگرە!
-          </p>
-          <div
-            class="bg-gray-900/50 backdrop-blur-sm max-w-sm sm:max-w-md mx-auto p-6 sm:p-8 rounded-2xl border border-yellow-500/30"
-          >
-            <p class="text-lg sm:text-2xl text-gray-300 mb-2">داشکاندن</p>
-            <p class="text-5xl sm:text-7xl font-bold text-yellow-400 mb-6">
-              25%
-            </p>
-            <Link
-              :href="route('offers')"
-              class="bg-yellow-400 text-gray-900 font-bold py-3 px-6 sm:px-10 rounded-full text-base sm:text-lg shadow-lg hover:bg-yellow-300 hover:scale-105 transform transition"
-            >
-              هەمی ئۆفەران ببینە
-            </Link>
-          </div>
-        </div>
-      </section>
+        هەمی ئۆفەران ببینە
+      </Link>
+    </div>
+  </div>
+</section>
 
       <!-- ========================= -->
       <!-- Gallery Section -->
